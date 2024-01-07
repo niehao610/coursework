@@ -58,7 +58,7 @@
          remote_src: no
          become: yes
          loop:
-         - { src: 'datafile_part_ab', host: 'client' }
+         - { src: 'datafile_part_ab', host: 'cluster_0' }
          - { src: 'datafile_part_ac', host: 'cluster_1' }
          - { src: 'datafile_part_ad', host: 'cluster_2' }
          - { src: 'datafile_part_ae', host: 'cluster_3' }

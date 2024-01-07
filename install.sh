@@ -2,10 +2,10 @@
 
 # Install the dependencies
 #clear
-cd  /home/ansible/ansible
-ansible -i ./hosts all -a "find   /home/ec2-user/coursework"  --key-file ~/.ssh/id_rsa
+#cd  /home/ansible/ansible
+#ansible -i ./hosts all -a "find   /home/ec2-user/coursework"  --key-file ~/.ssh/id_rsa
 
-ansible -i ./hosts all -a "sudo mkdir -p /data/coursework/s4pred/"  --key-file ~/.ssh/id_rsa
+#ansible -i ./hosts all -a "sudo mkdir -p /data/coursework/s4pred/"  --key-file ~/.ssh/id_rsa
 
 #create working directory on clients
 ansible-playbook -i ./hosts ./clear_files.yml --key-file ~/.ssh/id_rsa

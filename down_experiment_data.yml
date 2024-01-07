@@ -7,6 +7,7 @@
       ansible.builtin.yum:
         name: 
         - wget
+        - unzip
  
     - name: Create work dir if it does not exist
       ansible.builtin.file:
@@ -20,9 +21,14 @@
         state: directory
         mode: '0755'
     
-    - name: delete weights 
+    - name: delete zip file 
       file:
         path: /data/coursework/data/uniprotkb_proteome_UP000005640_2023_10_05.zip
+        state: absent
+
+    - name: delete extract file 
+      file:
+        path: /data/coursework/data/uniprotkb_proteome_UP000005640_2023_10_05.fasta
         state: absent
 
     - name: download raw experiment data file from host
@@ -34,7 +40,6 @@
       ansible.builtin.unarchive:
         src: "/data/coursework/data/uniprotkb_proteome_UP000005640_2023_10_05.zip"
         dest: "/data/coursework/data/"
-        remote_src: yes
 
     - name: download bash script
       get_url:

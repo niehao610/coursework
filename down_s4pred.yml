@@ -2,6 +2,11 @@
   hosts: client_machine
   become: yes
   tasks:
+    - name: enter destination directory exists
+      ansible.builtin.file:
+        path: "/home/ec2-user/coursework"
+        state: directory
+
     - name: Clone S4PRED repository
       git:
         repo: 'https://github.com/psipred/s4pred'

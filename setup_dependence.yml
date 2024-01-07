@@ -26,9 +26,11 @@
         executable: pip3
 
     - name: Install torch python package
-      pip:
+      ansible.builtin.pip:
+        name: 
         - torch 
         - torchvision 
         - torchaudio
-        - "--index-url https://download.pytorch.org/whl/cpu"
+        executable: pip3
+        extra_args: --index-url https://download.pytorch.org/whl/cpu
 

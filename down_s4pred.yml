@@ -5,17 +5,17 @@
     - name: Clone S4PRED repository
       git:
         repo: 'https://github.com/psipred/s4pred'
-        dest: '/home/ec2-user/comp0235/'
+        dest: '/data/coursework/'
         clone: yes
         update: yes
 
     - name: Download model weights
       get_url:
         url: 'http://bioinfadmin.cs.ucl.ac.uk/downloads/s4pred/weights.tar.gz'
-        dest: '/home/ec2-user/comp0235/s4pred/weights.tar.gz'
+        dest: '/data/coursework/s4pred/weights.tar.gz'
 
     - name: Extract model weights
       ansible.builtin.unarchive:
-        src: '/home/ec2-user/comp0235/s4pred/weights.tar.gz'
-        dest: '/home/ec2-user/comp0235/s4pred/'
+        src: '/data/coursework/s4pred/weights.tar.gz'
+        dest: '/data/coursework/s4pred/'
         remote_src: yes

@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 #split experiment_ids
-ROOTPATH=/home/ec2_user/coursework/
+ROOTPATH=/data/coursework/
 
 cd $ROOTPATH
 

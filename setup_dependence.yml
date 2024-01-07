@@ -5,10 +5,7 @@
 
     - name: Install yum packages
       ansible.builtin.yum:
-        name: "{{ packages }}"
-        become: true
-        vars:
-        packages:
+        name: 
         - python3
         - unzip
         - git
@@ -30,7 +27,10 @@
 
     - name: Install torch python package
       ansible.builtin.pip:
-        name: torch torchvision torchaudio
+        name: 
+        - torch 
+        - torchvision 
+        - torchaudio
         executable: pip3
         extra_args: --index-url https://download.pytorch.org/whl/cpu
 

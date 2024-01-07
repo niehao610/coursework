@@ -37,17 +37,23 @@
         src: "/home/ec2-user/coursework/uniprotkb_proteome_UP000005640_2023_10_05.zip"
         dest: "/data/coursework/data/"
 
+    - name: Create a directory if it does not exist
+      ansible.builtin.file:
+        path: "/data/coursework/data/split_ids/"
+        state: directory
+        mode: '0755'
+
     - name: enter destination directory exists
       ansible.builtin.file:
         path: "/home/ec2-user/coursework"
         state: directory
 
     - name: spilt experiment data, discript to client
-      script: /home/ec2_user/coursework/prepare_experiment.sh  
+      script: /home/ec2-user/coursework/prepare_experiment.sh
 
     - name: Copy split file to client
       ansible.builtin.copy:
-         src: "/home/ec2-user/coursework/data/split_ids/{{ item.src }}"
+         src: "/data/coursework/data/split_ids/{{ item.src }}"
          dest: "/home/ec2-user/coursework/data/rawdata.fasta"
          remote_src: no
          become: yes

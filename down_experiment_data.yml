@@ -52,7 +52,7 @@
       script: /home/ec2-user/coursework/prepare_experiment.sh
     
     - name: "Copy part file to client2"
-      command: scp  /data/coursework/data/split_ids/datafile_part_ab   ec2-3-11-209-4.eu-west-2.compute.amazonaws.com:/tmp/rawdata.fasta
+      command: scp  /data/coursework/data/split_ids/datafile_part_ab   ec2-user@ec2-3-11-209-4.eu-west-2.compute.amazonaws.com:/tmp/rawdata.fasta
             
 #    - name: Copy split file to client
 #      ansible.builtin.copy:

@@ -53,6 +53,25 @@
     
     - name: pull part file to local
       fetch: 
-        src: /data/coursework/data/split_ids/datafile_part_*
+        src: /data/coursework/data/split_ids/datafile_part_aa
         dest: /home/ec2-user/coursework/data/
-        
+
+    - name: pull part file to local
+      fetch: 
+        src: /data/coursework/data/split_ids/datafile_part_ab
+        dest: /home/ec2-user/coursework/data/
+
+    - name: pull part file to local
+      fetch: 
+        src: /data/coursework/data/split_ids/datafile_part_ac
+        dest: /home/ec2-user/coursework/data/        
+
+    - name: pull part file to local
+      fetch: 
+        src: /data/coursework/data/split_ids/datafile_part_ad
+        dest: /home/ec2-user/coursework/data/
+
+    - name: pull part file to local
+      fetch: 
+        src: /data/coursework/data/split_ids/datafile_part_ae
+        dest: /home/ec2-user/coursework/data/    

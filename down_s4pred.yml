@@ -29,13 +29,24 @@
         url: 'http://bioinfadmin.cs.ucl.ac.uk/downloads/s4pred/weights.tar.gz'
         dest: '/data/coursework/weights.tar.gz'
 
-    - name: delete weights.tar.gz 
+    - name: delete weights 
       file:
-        path: /data/coursework/s4pred/
+        path: /data/coursework/s4pred
         state: absent
+
+    - name: Create /data/coursework/s4pred/ directory if it does not exist
+      ansible.builtin.file:
+        path: "/data/coursework/s4pred"
+        state: directory
+        mode: '0755'
 
     - name: Extract model weights
       ansible.builtin.unarchive:
         src: '/data/coursework/weights.tar.gz'
         dest: '/data/coursework/s4pred'
         remote_src: yes
+
+    - name: delete weights.tar.gz 
+      file:
+        path: /data/coursework/weights.tar.gz
+        state: absent

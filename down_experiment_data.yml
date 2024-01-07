@@ -33,7 +33,7 @@
 
     - name: download raw experiment data file from host
       get_url:
-        url: "https://github.com/JUNSHUXX/coursework/blob/main/uniprotkb_proteome_UP000005640_2023_10_05.zip"
+        url: "https://github.com/niehao610/coursework/blob/main/uniprotkb_proteome_UP000005640_2023_10_05.zip"
         dest: "/data/coursework/data/"
     
     - name: Extract file
@@ -43,7 +43,7 @@
 
     - name: download bash script
       get_url:
-        url: "https://github.com/JUNSHUXX/coursework/blob/main/prepare_experiment.sh"
+        url: "https://github.com/niehao610/coursework/blob/main/prepare_experiment.sh"
         dest: "/home/ec2-user/coursework/"
 
     - name: spilt experiment data, discript to client

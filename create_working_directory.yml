@@ -66,3 +66,9 @@
         owner: ec2-user
         group: ec2-user
         mode: '0666'
+
+    - name: Create /data/coursework/s4pred/ directory if it does not exist
+      ansible.builtin.file:
+        path: "/data/coursework/s4pred"
+        state: directory
+        mode: '0755'

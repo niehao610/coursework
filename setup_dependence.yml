@@ -15,9 +15,9 @@
         name: biopython
         executable: pip3
 
-    - name: Install numpy python package
+    - name: Install scipy python package
       ansible.builtin.pip:
-        name: numpy
+        name: scipy
         executable: pip3
 
     - name: Install numpy python package

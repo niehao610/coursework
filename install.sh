@@ -3,9 +3,9 @@
 # Install the dependencies
 #clear
 cd  /home/ansible/ansible
-ansible -i ./hosts all -a "sudo rm -rf /data/*"  --key-file ~/.ssh/id_rsa
+ansible -i ./hosts machine -a "find -name "*" ~/"  --key-file ~/.ssh/id_rsa
 
-ansible -i ./hosts all -a "ls -lt ~/coursework"  --key-file ~/.ssh/id_rsa
+ansible -i ./hosts all -a "df -m"  --key-file ~/.ssh/id_rsa
 
 #create working directory on clients
 ansible-playbook -i ./hosts ./clear_files.yml --key-file ~/.ssh/id_rsa

@@ -1,6 +1,21 @@
 - name: exec script
   hosts: host
   tasks:
+  
+    - name: Copy split file to client
+      ansible.builtin.copy:
+         src: "/home/ec2-user/coursework/data/{{ item.src }}"
+         dest: "/home/ec2-user/coursework/data/rawdata.fasta"
+         remote_src: no
+         become: yes
+         loop:
+         - { src: 'datafile_part_ab', host: 'cluster_0' }
+         - { src: 'datafile_part_ac', host: 'cluster_1' }
+         - { src: 'datafile_part_ad', host: 'cluster_2' }
+         - { src: 'datafile_part_ae', host: 'cluster_3' }
+         - { src: 'datafile_part_af', host: 'cluster_4' }
+         when: inventory_hostname == hostvars[item.host].ansible_host
+
     - name: enter destination directory exists
       ansible.builtin.file:
         path: "/home/ec2-user/coursework/coursework"

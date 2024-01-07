@@ -3,13 +3,10 @@
   hosts: host_machine
   become: yes
   tasks:
-      - name: Install yum packages
-        ansible.builtin.yum:
-            name: "{{ packages }}"
-            become: true
-            vars:
-            packages:
-            - wget
+    - name: Install yum packages
+      ansible.builtin.yum:
+        name: 
+        - wget
 - 
     - name: Create work dir if it does not exist
       ansible.builtin.file:

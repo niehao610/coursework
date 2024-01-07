@@ -23,7 +23,7 @@ ansible-playbook -i ./hosts ./down_s4pred.yml --key-file ~/.ssh/id_rsa
 
 #host 上面下载原始数据 并分割分发给client
 #create working directory on host
-ansible-playbook -i ./hosts ./down_experiment_data.pml --key-file ~/.ssh/id_rsa
+ansible-playbook -i ./hosts ./down_experiment_data.yml --key-file ~/.ssh/id_rsa
 
 
 ##数据都主备好了

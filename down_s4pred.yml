@@ -1,5 +1,5 @@
 - name: Install S4PRED HH-suite
-  hosts: clients
+  hosts: client_machine
   become: yes
   tasks:
     - name: Clone S4PRED repository

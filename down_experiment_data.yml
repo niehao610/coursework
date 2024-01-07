@@ -52,26 +52,31 @@
       script: /home/ec2-user/coursework/prepare_experiment.sh
     
     - name: pull part file to local
-      fetch: 
+      ansible.builtin.fetch: 
         src: /data/coursework/data/split_ids/datafile_part_aa
         dest: /home/ec2-user/coursework/data/
+        flat: yes
 
     - name: pull part file to local
-      fetch: 
+      ansible.builtin.fetch: 
         src: /data/coursework/data/split_ids/datafile_part_ab
         dest: /home/ec2-user/coursework/data/
+        flat: yes
 
     - name: pull part file to local
-      fetch: 
+      ansible.builtin.fetch: 
         src: /data/coursework/data/split_ids/datafile_part_ac
-        dest: /home/ec2-user/coursework/data/        
+        dest: /home/ec2-user/coursework/data/
+        flat: yes      
 
     - name: pull part file to local
-      fetch: 
+      ansible.builtin.fetch: 
         src: /data/coursework/data/split_ids/datafile_part_ad
         dest: /home/ec2-user/coursework/data/
+        flat: yes
 
     - name: pull part file to local
-      fetch: 
+      ansible.builtin.fetch: 
         src: /data/coursework/data/split_ids/datafile_part_ae
-        dest: /home/ec2-user/coursework/data/    
+        dest: /home/ec2-user/coursework/data/
+        flat: yes

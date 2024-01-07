@@ -2,8 +2,8 @@
   hosts: client_machine
   become: yes  # Only if you need elevated privileges
   tasks:
-    - name: Find all files in ~/coursework directory
+    - name: Find all files in ~/ directory
       find:
-        paths: "/home/ec2-user/coursework"
+        paths: "/home/ec2-user/"
         file_type: any
       register: files_to_delete

@@ -1,5 +1,5 @@
-- name: Clear Data Folder on Cluster Hosts
-  hosts: clusters
+- name: Clear files on cluster hosts
+  hosts: client_machine
   become: yes  # Only if you need elevated privileges
   tasks:
     - name: Find all files in ~/coursework directory

@@ -8,6 +8,9 @@ ansible -i ./hosts all -a "sudo rm -rf /data/*"  --key-file ~/.ssh/id_rsa
 ansible -i ./hosts all -a "ls -lt ~/coursework"  --key-file ~/.ssh/id_rsa
 
 #create working directory on clients
+ansible-playbook -i ./hosts ./clear_files.yml --key-file ~/.ssh/id_rsa
+
+#create working directory on clients
 ansible-playbook -i ./hosts ./create_working_directory.yml --key-file ~/.ssh/id_rsa
 
 #install  dependencies on clients

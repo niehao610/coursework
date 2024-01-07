@@ -51,16 +51,16 @@
     - name: spilt experiment data, discript to client
       script: /home/ec2-user/coursework/prepare_experiment.sh
 
-    - name: Copy split file to client
-      ansible.builtin.copy:
-         src: "/data/coursework/data/split_ids/{{ item.src }}"
-         dest: "/home/ec2-user/coursework/data/rawdata.fasta"
-         remote_src: no
-         become: yes
-         loop:
-         - { src: 'datafile_part_ab', host: 'cluster_0' }
-         - { src: 'datafile_part_ac', host: 'cluster_1' }
-         - { src: 'datafile_part_ad', host: 'cluster_2' }
-         - { src: 'datafile_part_ae', host: 'cluster_3' }
-         - { src: 'datafile_part_af', host: 'cluster_4' }
-         when: inventory_hostname == hostvars[item.host].ansible_host
+#    - name: Copy split file to client
+#      ansible.builtin.copy:
+#         src: "/data/coursework/data/split_ids/{{ item.src }}"
+#         dest: "/home/ec2-user/coursework/data/rawdata.fasta"
+#         remote_src: no
+#         become: yes
+#         loop:
+#         - { src: 'datafile_part_ab', host: 'cluster_0' }
+#         - { src: 'datafile_part_ac', host: 'cluster_1' }
+#         - { src: 'datafile_part_ad', host: 'cluster_2' }
+#         - { src: 'datafile_part_ae', host: 'cluster_3' }
+#         - { src: 'datafile_part_af', host: 'cluster_4' }
+#         when: inventory_hostname == hostvars[item.host].ansible_host

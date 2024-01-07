@@ -4,65 +4,65 @@
   tasks:
     - name: Create a directory if it does not exist
       ansible.builtin.file:
-        path: "/data/coursework"
+        path: "/home/ec2-user/coursework"
         state: directory
         mode: '0755'
     
     - name: Create a directory if it does not exist
       ansible.builtin.file:
-        path: "/data/coursework/data"
+        path: "/home/ec2-user/coursework/data"
         state: directory
         mode: '0755'
     
     - name: Create tmp directory if it does not exist
       ansible.builtin.file:
-        path: "/data/coursework/data/tmp/"
+        path: "/home/ec2-user/coursework/data/tmp/"
         state: directory
         mode: '0755'
 
     - name: Create  directory hhdb/pdb70 if it does not exist
       ansible.builtin.file:
-        path: "/data/coursework/data/hhdb/pdb70/"
+        path: "/home/ec2-user/coursework/data/hhdb/pdb70/"
         state: directory
         mode: '0755'
 
     - name: Create output directory if it does not exist
       ansible.builtin.file:
-        path: "/data/coursework/data/output/"
+        path: "/home/ec2-user/coursework/data/output/"
         state: directory
         mode: '0755'
 
     - name: enter destination directory exists
       ansible.builtin.file:
-        path: "/data/coursework"
+        path: "/home/ec2-user/coursework"
         state: directory
 
     - name: download pipeline_script
       get_url:
         url: "https://github.com/JUNSHUXX/coursework/blob/main/pipeline_script.py"
-        dest: "/data/coursework"
+        dest: "/home/ec2-user/coursework"
 
     - name: download results_parser.py
       get_url:
         url: "https://github.com/JUNSHUXX/coursework/blob/main/results_parser.py"
-        dest: "/data/coursework"
+        dest: "/home/ec2-user/coursework"
 
     - name: Create hh-suite directory if it does not exist
       ansible.builtin.file:
-        path: "/data/coursework/hh-suite"
+        path: "/home/ec2-user/coursework/hh-suite"
         state: directory
         mode: '0755'
 
     - name: Create hh-suite/bin directory if it does not exist
       ansible.builtin.file:
-        path: "/data/coursework/hh-suite/bin"
+        path: "/home/ec2-user/coursework/hh-suite/bin"
         state: directory
         mode: '0755'
 
     - name: Copy hhsearch
       ansible.builtin.copy:
-        src:  "/data/coursework/hh-suite/bin/hhsearch"
-        dest: "/data/coursework/hh-suite/bin"
+        src:  "/home/ec2-user/coursework/hh-suite/bin/hhsearch"
+        dest: "/home/ec2-user/coursework/hh-suite/bin"
         owner: ec2-user
         group: ec2-user
         mode: '0666'

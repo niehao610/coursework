@@ -1,0 +1,9 @@
+- name: Clear Data Folder on Cluster Hosts
+  hosts: clusters
+  become: yes  # Only if you need elevated privileges
+  tasks:
+    - name: Find all files in ~/coursework directory
+      find:
+        paths: "/home/ec2-user/coursework"
+        file_type: any
+      register: files_to_delete

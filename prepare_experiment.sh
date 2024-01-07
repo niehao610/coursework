@@ -6,7 +6,7 @@ ROOTPATH=/data/coursework/
 cd $ROOTPATH
 
 CLI_NUM=5
-totalNum=`wc -l ./data/experiment_ids.txt | awk '{print $1}'`
+totalNum=`wc -l ./data/uniprotkb_proteome_UP000005640_2023_10_05.fasta | awk '{print $1}'`
 echo $totalNum
 avgNum=`expr $totalNum / $CLI_NUM + 1`
 echo $avgNum

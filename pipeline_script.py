@@ -6,7 +6,7 @@ from Bio import SeqIO
 usage: python pipeline_script.py INPUT.fasta  
 approx 5min per analysis
 """
-BASE_PATH="/data/coursework"
+BASE_PATH="/home/ec2-user/coursework"
 
 def run_parser(hhr_file):
     """
@@ -24,7 +24,7 @@ def run_hhsearch(a3m_file,hhr_file):
     """
     cmd = [BASE_PATH+'/hh-suite/bin/hhsearch',
            '-i', a3m_file, '-cpu', '1', '-d', 
-           '/data/pdb70/']
+            '/data/pdb70/']
     print(f'STEP 3: RUNNING HHSEARCH: {" ".join(cmd)}')
     p = Popen(cmd, stdin=PIPE,stdout=PIPE, stderr=PIPE)
     out, err = p.communicate()
@@ -49,7 +49,7 @@ def read_horiz(tmp_file, horiz_file, a3m_file):
     with open(a3m_file, "w") as fh_out:
         fh_out.write(f">ss_pred\n{pred}\n>ss_conf\n{conf}\n")
         fh_out.write(contents)
-        
+
 def run_s4pred(input_file, out_file):
     """
     Runs the s4pred secondary structure predictor to produce the horiz file

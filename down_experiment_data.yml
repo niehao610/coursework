@@ -13,35 +13,42 @@
 - 
     - name: Create a directory if it does not exist
       ansible.builtin.file:
-        path: "/data/coursework"
+        path: "/home/ec2-user/coursework"
         state: directory
         mode: '0755'
 
     - name: Create  directory hhdb/pdb70 if it does not exist
       ansible.builtin.file:
-        path: "/data/coursework/data/split_ids/"
+        path: "/home/ec2-user/coursework/data/split_ids/"
         state: directory
         mode: '0755'
 
 
     - name: download raw experiment data file from host
       get_url:
-        url: "https://github.com/JUNSHUXX/coursework/blob/main/experiment_ids.txt"
-        dest: "/data/coursework/data/"
+        url: "https://github.com/JUNSHUXX/coursework/blob/main/uniprotkb_proteome_UP000005640_2023_10_05.zip"
+        dest: "/home/ec2-user/coursework/data/"
     
-    - name: download bash script
-      get_url:
-        url: "https://github.com/JUNSHUXX/coursework/blob/main/prepare_experiment.sh"
-        dest: "/data/coursework/"
 
+
+    - name: Extract database
+      unarchive:
+        src: "/home/ec2-user/coursework/data/uniprotkb_proteome_UP000005640_2023_10_05.zip"
+        dest: "/home/ec2-user/data/"
+        remote_src: yes
+        
     - name: spilt experiment data, discript to client
       script: /home/ec2_user/coursework/prepare_experiment.sh  
 
+    - name: download bash script
+      get_url:
+        url: "https://github.com/JUNSHUXX/coursework/blob/main/prepare_experiment.sh"
+        dest: "/home/ec2-user/coursework/"
 
     - name: Copy split file to client
       ansible.builtin.copy:
-         src: "/data/coursework/data/split_ids/{{ item.src }}"
-         dest: "/data/coursework/data/experiment_ids.txt"
+         src: "/home/ec2-user/coursework/data/split_ids/{{ item.src }}"
+         dest: "/home/ec2-user/coursework/data/rawdata.fasta"
          remote_src: no
          become: yes
          loop:

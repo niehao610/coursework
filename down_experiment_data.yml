@@ -1,0 +1,53 @@
+
+- name: distribute part experiment_ids file to client
+  hosts: host_machine
+  become: yes
+  tasks:
+      - name: Install yum packages
+        ansible.builtin.yum:
+            name: "{{ packages }}"
+            become: true
+            vars:
+            packages:
+            - wget
+- 
+    - name: Create a directory if it does not exist
+      ansible.builtin.file:
+        path: "/home/ec2-user/coursework"
+        state: directory
+        mode: '0755'
+
+    - name: Create  directory hhdb/pdb70 if it does not exist
+      ansible.builtin.file:
+        path: "/home/ec2-user/coursework/data/split_ids/"
+        state: directory
+        mode: '0755'
+
+
+    - name: download raw experiment data file from host
+      get_url:
+        url: "https://github.com/JUNSHUXX/coursework/blob/main/experiment_ids.txt"
+        dest: "/home/ec2-user/coursework/data/"
+    
+    - name: download bash script
+      get_url:
+        url: "https://github.com/JUNSHUXX/coursework/blob/main/prepare_experiment.sh"
+        dest: "/home/ec2-user/coursework/"
+
+    - name: spilt experiment data, discript to client
+      script: /home/ec2_user/coursework/prepare_experiment.sh  
+
+
+    - name: Copy split file to client
+      ansible.builtin.copy:
+         src: "/home/ec2-user/coursework/data/split_ids/{{ item.src }}"
+         dest: "/home/ec2-user/coursework/data/experiment_ids.txt"
+         remote_src: no
+         become: yes
+         loop:
+         - { src: 'datafile_part_ab', host: 'client' }
+         - { src: 'datafile_part_ac', host: 'cluster_1' }
+         - { src: 'datafile_part_ad', host: 'cluster_2' }
+         - { src: 'datafile_part_ae', host: 'cluster_3' }
+         - { src: 'datafile_part_af', host: 'cluster_4' }
+         when: inventory_hostname == hostvars[item.host].ansible_host

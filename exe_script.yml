@@ -1,0 +1,14 @@
+- name: exec script
+  hosts: host
+  tasks:
+    - name: enter destination directory exists
+      ansible.builtin.file:
+        path: "/home/ec2-user/coursework"
+        state: directory
+
+    - name: Run the Python file
+      ansible.builtin.command:
+        cmd: "python  ./pipeline_script.py  ./data/experiment_ids.txt {{ rank }}"
+      args:
+        chdir: "/home/ec2-user/coursework"
+  

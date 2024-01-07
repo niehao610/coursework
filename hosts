@@ -1,0 +1,9 @@
+[host_machine]
+machine ansible_host=ec2-18-170-108-44.eu-west-2.compute.amazonaws.com
+
+[client_machine]
+cluster_0 ansible_host=ec2-35-176-93-106.eu-west-2.compute.amazonaws.com
+cluster_1 ansible_host=ec2-3-11-209-4.eu-west-2.compute.amazonaws.com
+cluster_2 ansible_host=ec2-3-9-251-72.eu-west-2.compute.amazonaws.com
+cluster_3 ansible_host=ec2-35-178-89-67.eu-west-2.compute.amazonaws.com
+cluster_4 ansible_host=ec2-35-179-98-206.eu-west-2.compute.amazonaws.com

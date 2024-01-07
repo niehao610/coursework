@@ -7,7 +7,7 @@
       ansible.builtin.yum:
         name: 
         - wget
-- 
+ 
     - name: Create work dir if it does not exist
       ansible.builtin.file:
         path: "/data/coursework"
@@ -20,20 +20,16 @@
         state: directory
         mode: '0755'
 
-
     - name: download raw experiment data file from host
       get_url:
         url: "https://github.com/JUNSHUXX/coursework/blob/main/uniprotkb_proteome_UP000005640_2023_10_05.zip"
         dest: "/data/coursework/data/"
     
-
     - name: Extract database
       unarchive:
         src: "/data/coursework/data/uniprotkb_proteome_UP000005640_2023_10_05.zip"
         dest: "/data/coursework/data/"
         remote_src: yes
-        
-
 
     - name: download bash script
       get_url:
